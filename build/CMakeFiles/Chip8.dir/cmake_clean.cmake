@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/Chip8.dir/src/main.c.obj"
+  "CMakeFiles/Chip8.dir/src/main.c.obj.d"
+  "Chip8.exe"
+  "Chip8.exe.manifest"
+  "Chip8.pdb"
+  "libChip8.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/Chip8.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

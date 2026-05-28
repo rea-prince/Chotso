@@ -1,0 +1,1 @@
+ -lIMGUI_LIB -lmingw32 C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2main.a C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2.a C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2_image.a -limm32 -lsetupapi -lwinmm -lgdi32 -lole32 -loleaut32 -luuid -lversion -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
