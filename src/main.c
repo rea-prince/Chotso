@@ -1,7 +1,5 @@
-#include <stdio.h>
+#include "common.h"
 
-#include <SDL.h>
-#include <SDL_image.h>
 
 const int WIDTH = 800, HEIGHT = 800;
 

@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME} ${SRC_FILES})
 target_include_directories(${PROJECT_NAME}
   PUBLIC
   ${CMAKE_SOURCE_DIR}/include/SDL2
+  ${CMAKE_SOURCE_DIR}/include
 )
 
 # link to project
@@ -28,7 +29,6 @@ target_include_directories(${PROJECT_NAME}
 if(WIN32)
   target_link_libraries(${PROJECT_NAME}
     PUBLIC
-    IMGUI_LIB
 
     mingw32
     ${CMAKE_SOURCE_DIR}/lib/SDL2/win/libSDL2main.a

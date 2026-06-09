@@ -128,6 +128,30 @@ Chip8/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/build
 .PHONY : Chip8/fast
 
+src/chip8.obj: src/chip8.c.obj
+.PHONY : src/chip8.obj
+
+# target to build an object file
+src/chip8.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/chip8.c.obj
+.PHONY : src/chip8.c.obj
+
+src/chip8.i: src/chip8.c.i
+.PHONY : src/chip8.i
+
+# target to preprocess a source file
+src/chip8.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/chip8.c.i
+.PHONY : src/chip8.c.i
+
+src/chip8.s: src/chip8.c.s
+.PHONY : src/chip8.s
+
+# target to generate assembly for a file
+src/chip8.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/chip8.c.s
+.PHONY : src/chip8.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chip8
+	@echo ... src/chip8.obj
+	@echo ... src/chip8.i
+	@echo ... src/chip8.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
