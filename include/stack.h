@@ -3,8 +3,6 @@
 
 #include "common.h"
 
-#define STACK_SIZE 48    // 48 B
-
 typedef struct {
     uint16_t stack[STACK_SIZE];
     uint16_t top;

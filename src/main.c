@@ -1,7 +1,5 @@
 #include "common.h"
-
-
-const int WIDTH = 800, HEIGHT = 800;
+#include "chip8.h"
 
 int main(int argc, char *argv[]) {
 
@@ -11,20 +9,20 @@ int main(int argc, char *argv[]) {
     SDL_Window *window_ptr = SDL_CreateWindow(
         "My renderer",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        800, 800,
+        WINDOW_WIDTH, WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
     );
     if (!window_ptr) {
         SDL_Quit();
         return -1;
     }
-    SDL_Renderer *renderer_ptr = SDL_CreateRenderer(window_ptr, -1, 0);
-    if (!renderer_ptr) {
+    SDL_Renderer *renderer = SDL_CreateRenderer(window_ptr, -1, 0);
+    if (!renderer) {
         SDL_DestroyWindow(window_ptr);
         SDL_Quit();
         return -1;
     }
-    SDL_SetRenderTarget(renderer_ptr, NULL);
+    SDL_SetRenderTarget(renderer, NULL);
 
 
     /* ------------------------------------------- */
@@ -32,10 +30,18 @@ int main(int argc, char *argv[]) {
     SDL_Event windowEvent; // input
     bool running = true;
     SDL_SetRenderDrawColor( // background color (rgba)
-        renderer_ptr,
+        renderer,
         120, 180, 255,
         255
     );
+
+    /* STUFF */
+
+    SDL_Texture *tex = SDL_CreateTexture(
+        renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING,
+        CHIP8_WIDTH, CHIP8_HEIGHT
+    );
+    Chip8 chip8 = Chip8_init();
 
     /* WINDOW LOOP */
     while (running) {
@@ -44,17 +50,19 @@ int main(int argc, char *argv[]) {
                 running = false;
             }
         }
+        SDL_RenderClear(renderer);
 
-        /* Create ImGui frame */
+        /* DRAW */
 
+        Chip8_render(chip8, tex);
+        SDL_RenderCopy(renderer, tex, NULL, NULL);
 
-        SDL_RenderClear(renderer_ptr); // clear renderer for imgui
+        /* ---- */
 
-
-        // ***rendering here renders in front of imgui***
-
-        SDL_RenderPresent(renderer_ptr);
+        SDL_RenderPresent(renderer);
     }
+
+    SDL_DestroyTexture(tex);
 
     /* DESTROY WINDOW */
     SDL_DestroyWindow(window_ptr);

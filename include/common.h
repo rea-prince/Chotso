@@ -16,4 +16,16 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
+/* DEFINITIONS */
+
+#define MEMORY_SIZE 4096 // 4 KiB
+#define STACK_SIZE 48    // 48 B
+
+#define CHIP8_HEIGHT 32
+#define CHIP8_WIDTH 64
+
+#define WINDOW_HEIGHT 32
+#define WINDOW_WIDTH 64
+
+
 #endif
