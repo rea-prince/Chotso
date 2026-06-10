@@ -1,4 +1,5 @@
 #include "common.h"
+#include "helpers.h"
 #include "chip8.h"
 
 int main(int argc, char *argv[]) {
@@ -42,29 +43,31 @@ int main(int argc, char *argv[]) {
         CHIP8_WIDTH, CHIP8_HEIGHT
     );
     Chip8 chip8 = Chip8_init();
+    SDL_RenderSetScale(renderer, W_SCALE, H_SCALE);
 
-    /* WINDOW LOOP */
+    /* MAIN LOOP */
+
     while (running) {
-        while (SDL_PollEvent (&windowEvent)) {
-            if (SDL_QUIT == windowEvent.type) {
-                running = false;
-            }
-        }
+        handle_input(&windowEvent, &running);
         SDL_RenderClear(renderer);
+
+        /* RUN CHIP */
+
+        // fetch
+        // decode
+        // execute
 
         /* DRAW */
 
         Chip8_render(chip8, tex);
         SDL_RenderCopy(renderer, tex, NULL, NULL);
-
-        /* ---- */
-
         SDL_RenderPresent(renderer);
     }
 
     SDL_DestroyTexture(tex);
 
     /* DESTROY WINDOW */
+
     SDL_DestroyWindow(window_ptr);
     SDL_Quit();
     return EXIT_SUCCESS;
