@@ -150,7 +150,18 @@ Chip8_decode(Chip8* chip8, uint16_t instruction) {
     } else if (n[0] == 0xA) {
         chip8->I = instruction & 0x0FFF;
     } else if (n[0] == 0xD) {
-        // nothing yet
+
+        uint8_t x = chip8->V[(instruction & 0x0F00) >> 8];
+        uint8_t y = chip8->V[(instruction & 0x00F0) >> 4];
+        uint8_t height = (instruction & 0xF);
+
+        // get offset
+
+        for (int i = chip8->I; i < n; i++) {
+
+        }
+
+
     }
 
 }
