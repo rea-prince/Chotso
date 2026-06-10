@@ -42,7 +42,8 @@ int main(int argc, char *argv[]) {
         renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING,
         CHIP8_WIDTH, CHIP8_HEIGHT
     );
-    Chip8 chip8 = Chip8_init();
+    Chip8 chip8;
+    Chip8_init(&chip8);
     SDL_RenderSetScale(renderer, W_SCALE, H_SCALE);
 
     /* MAIN LOOP */
@@ -59,7 +60,7 @@ int main(int argc, char *argv[]) {
 
         /* DRAW */
 
-        Chip8_render(chip8, tex);
+        Chip8_render(&chip8, tex);
         SDL_RenderCopy(renderer, tex, NULL, NULL);
         SDL_RenderPresent(renderer);
     }

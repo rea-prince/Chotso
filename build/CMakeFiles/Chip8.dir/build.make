@@ -86,11 +86,41 @@ CMakeFiles/Chip8.dir/src/chip8.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Chip8.dir/src/chip8.c.s"
 	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\dev\_projects\Chip8\src\chip8.c -o CMakeFiles\Chip8.dir\src\chip8.c.s
 
+CMakeFiles/Chip8.dir/src/helpers.c.obj: CMakeFiles/Chip8.dir/flags.make
+CMakeFiles/Chip8.dir/src/helpers.c.obj: CMakeFiles/Chip8.dir/includes_C.rsp
+CMakeFiles/Chip8.dir/src/helpers.c.obj: C:/dev/_projects/Chip8/src/helpers.c
+CMakeFiles/Chip8.dir/src/helpers.c.obj: CMakeFiles/Chip8.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Chip8.dir/src/helpers.c.obj"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Chip8.dir/src/helpers.c.obj -MF CMakeFiles\Chip8.dir\src\helpers.c.obj.d -o CMakeFiles\Chip8.dir\src\helpers.c.obj -c C:\dev\_projects\Chip8\src\helpers.c
+
+CMakeFiles/Chip8.dir/src/helpers.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Chip8.dir/src/helpers.c.i"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\dev\_projects\Chip8\src\helpers.c > CMakeFiles\Chip8.dir\src\helpers.c.i
+
+CMakeFiles/Chip8.dir/src/helpers.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Chip8.dir/src/helpers.c.s"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\dev\_projects\Chip8\src\helpers.c -o CMakeFiles\Chip8.dir\src\helpers.c.s
+
+CMakeFiles/Chip8.dir/src/instructions.c.obj: CMakeFiles/Chip8.dir/flags.make
+CMakeFiles/Chip8.dir/src/instructions.c.obj: CMakeFiles/Chip8.dir/includes_C.rsp
+CMakeFiles/Chip8.dir/src/instructions.c.obj: C:/dev/_projects/Chip8/src/instructions.c
+CMakeFiles/Chip8.dir/src/instructions.c.obj: CMakeFiles/Chip8.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Chip8.dir/src/instructions.c.obj"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Chip8.dir/src/instructions.c.obj -MF CMakeFiles\Chip8.dir\src\instructions.c.obj.d -o CMakeFiles\Chip8.dir\src\instructions.c.obj -c C:\dev\_projects\Chip8\src\instructions.c
+
+CMakeFiles/Chip8.dir/src/instructions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Chip8.dir/src/instructions.c.i"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\dev\_projects\Chip8\src\instructions.c > CMakeFiles\Chip8.dir\src\instructions.c.i
+
+CMakeFiles/Chip8.dir/src/instructions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Chip8.dir/src/instructions.c.s"
+	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\dev\_projects\Chip8\src\instructions.c -o CMakeFiles\Chip8.dir\src\instructions.c.s
+
 CMakeFiles/Chip8.dir/src/main.c.obj: CMakeFiles/Chip8.dir/flags.make
 CMakeFiles/Chip8.dir/src/main.c.obj: CMakeFiles/Chip8.dir/includes_C.rsp
 CMakeFiles/Chip8.dir/src/main.c.obj: C:/dev/_projects/Chip8/src/main.c
 CMakeFiles/Chip8.dir/src/main.c.obj: CMakeFiles/Chip8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Chip8.dir/src/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Chip8.dir/src/main.c.obj"
 	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Chip8.dir/src/main.c.obj -MF CMakeFiles\Chip8.dir\src\main.c.obj.d -o CMakeFiles\Chip8.dir\src\main.c.obj -c C:\dev\_projects\Chip8\src\main.c
 
 CMakeFiles/Chip8.dir/src/main.c.i: cmake_force
@@ -105,7 +135,7 @@ CMakeFiles/Chip8.dir/src/stack.c.obj: CMakeFiles/Chip8.dir/flags.make
 CMakeFiles/Chip8.dir/src/stack.c.obj: CMakeFiles/Chip8.dir/includes_C.rsp
 CMakeFiles/Chip8.dir/src/stack.c.obj: C:/dev/_projects/Chip8/src/stack.c
 CMakeFiles/Chip8.dir/src/stack.c.obj: CMakeFiles/Chip8.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Chip8.dir/src/stack.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Chip8.dir/src/stack.c.obj"
 	C:\ProgramData\mingw64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Chip8.dir/src/stack.c.obj -MF CMakeFiles\Chip8.dir\src\stack.c.obj.d -o CMakeFiles\Chip8.dir\src\stack.c.obj -c C:\dev\_projects\Chip8\src\stack.c
 
 CMakeFiles/Chip8.dir/src/stack.c.i: cmake_force
@@ -119,6 +149,8 @@ CMakeFiles/Chip8.dir/src/stack.c.s: cmake_force
 # Object files for target Chip8
 Chip8_OBJECTS = \
 "CMakeFiles/Chip8.dir/src/chip8.c.obj" \
+"CMakeFiles/Chip8.dir/src/helpers.c.obj" \
+"CMakeFiles/Chip8.dir/src/instructions.c.obj" \
 "CMakeFiles/Chip8.dir/src/main.c.obj" \
 "CMakeFiles/Chip8.dir/src/stack.c.obj"
 
@@ -126,6 +158,8 @@ Chip8_OBJECTS = \
 Chip8_EXTERNAL_OBJECTS =
 
 Chip8.exe: CMakeFiles/Chip8.dir/src/chip8.c.obj
+Chip8.exe: CMakeFiles/Chip8.dir/src/helpers.c.obj
+Chip8.exe: CMakeFiles/Chip8.dir/src/instructions.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/src/main.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/src/stack.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/build.make
@@ -135,7 +169,7 @@ Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2_image.a
 Chip8.exe: CMakeFiles/Chip8.dir/linkLibs.rsp
 Chip8.exe: CMakeFiles/Chip8.dir/objects1.rsp
 Chip8.exe: CMakeFiles/Chip8.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Chip8.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\dev\_projects\Chip8\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Chip8.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Chip8.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

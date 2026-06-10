@@ -152,6 +152,54 @@ src/chip8.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/chip8.c.s
 .PHONY : src/chip8.c.s
 
+src/helpers.obj: src/helpers.c.obj
+.PHONY : src/helpers.obj
+
+# target to build an object file
+src/helpers.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/helpers.c.obj
+.PHONY : src/helpers.c.obj
+
+src/helpers.i: src/helpers.c.i
+.PHONY : src/helpers.i
+
+# target to preprocess a source file
+src/helpers.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/helpers.c.i
+.PHONY : src/helpers.c.i
+
+src/helpers.s: src/helpers.c.s
+.PHONY : src/helpers.s
+
+# target to generate assembly for a file
+src/helpers.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/helpers.c.s
+.PHONY : src/helpers.c.s
+
+src/instructions.obj: src/instructions.c.obj
+.PHONY : src/instructions.obj
+
+# target to build an object file
+src/instructions.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/instructions.c.obj
+.PHONY : src/instructions.c.obj
+
+src/instructions.i: src/instructions.c.i
+.PHONY : src/instructions.i
+
+# target to preprocess a source file
+src/instructions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/instructions.c.i
+.PHONY : src/instructions.c.i
+
+src/instructions.s: src/instructions.c.s
+.PHONY : src/instructions.s
+
+# target to generate assembly for a file
+src/instructions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/instructions.c.s
+.PHONY : src/instructions.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -212,6 +260,12 @@ help:
 	@echo ... src/chip8.obj
 	@echo ... src/chip8.i
 	@echo ... src/chip8.s
+	@echo ... src/helpers.obj
+	@echo ... src/helpers.i
+	@echo ... src/helpers.s
+	@echo ... src/instructions.obj
+	@echo ... src/instructions.i
+	@echo ... src/instructions.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

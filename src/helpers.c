@@ -7,7 +7,7 @@ void
 handle_input(SDL_Event* windowEvent, bool* running) {
     while (SDL_PollEvent(windowEvent)) {
         if (SDL_QUIT == windowEvent->type)
-            running = false;
+            *running = false;
     }
 }
 

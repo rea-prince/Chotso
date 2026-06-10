@@ -26,13 +26,12 @@ typedef struct {
     uint8_t font[5 * 16]; // 16 characters, each with height of 5
     // TODO: Load this at runtime
 
-    uint8_t display[CHIP8_HEIGHT][CHIP8_WIDTH / 8]; // 64 x 32 B&W pixels
-    // TODO: Make this a 1D array
+    uint8_t display[CHIP8_HEIGHT * CHIP8_WIDTH / 8]; // 64 x 32 B&W pixels
 
 } Chip8;
 
 void Chip8_init(Chip8* chip8);
-void Chip8_render(Chip8 chip8, SDL_Texture* tex);
+void Chip8_render(Chip8* chip8, SDL_Texture* tex);
 
 /* DELAY */
 
@@ -42,11 +41,9 @@ void Chip8_render(Chip8 chip8, SDL_Texture* tex);
 
 /* CYCLE */
 
-
-
-int Chip8_cycle() {
-
-}
+uint16_t Chip8_fetch(Chip8* chip8);
+void Chip8_decode(Chip8* chip8, uint16_t instruction);
+void Chip8_execute(Chip8* chip8);
 
 
 #endif

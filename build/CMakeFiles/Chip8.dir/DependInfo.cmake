@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/dev/_projects/Chip8/src/chip8.c" "CMakeFiles/Chip8.dir/src/chip8.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/chip8.c.obj.d"
+  "C:/dev/_projects/Chip8/src/helpers.c" "CMakeFiles/Chip8.dir/src/helpers.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/helpers.c.obj.d"
+  "C:/dev/_projects/Chip8/src/instructions.c" "CMakeFiles/Chip8.dir/src/instructions.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/instructions.c.obj.d"
   "C:/dev/_projects/Chip8/src/main.c" "CMakeFiles/Chip8.dir/src/main.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/main.c.obj.d"
   "C:/dev/_projects/Chip8/src/stack.c" "CMakeFiles/Chip8.dir/src/stack.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/stack.c.obj.d"
   )
