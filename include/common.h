@@ -16,9 +16,4 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-/* MODELS */
-
-#include "stack.h"
-#include "chip8.h"
-
 #endif

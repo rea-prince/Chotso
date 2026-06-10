@@ -2,13 +2,15 @@
 #define CHIP8_H
 
 #include "common.h"
+#include "stack.h"
 
-#define MEMORY_SIZE 4096
+#define MEMORY_SIZE 4096 // 4 KiB
 
 #define DISPLAY_HEIGHT 8
 #define DISPLAY_WIDTH 4
 
-typedef struct Chip8 {
+
+typedef struct {
 
     /* MEMORY */
 
@@ -19,11 +21,13 @@ typedef struct Chip8 {
 
     /* STACK (will just use an array for now) */
 
-
+    Stack stack;
 
     /* DISPLAY */
 
+    uint8_t font[5 * 16]; // 16 characters, each with height of 5
     uint8_t display[DISPLAY_HEIGHT * DISPLAY_WIDTH]; // 64 x 32 B&W pixels
+
 } Chip8;
 
 

@@ -132,6 +132,7 @@ CMakeFiles/Chip8.dir/src/chip8.c.obj: C:/dev/_projects/Chip8/src/chip8.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_timeval.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
@@ -146,11 +147,14 @@ CMakeFiles/Chip8.dir/src/chip8.c.obj: C:/dev/_projects/Chip8/src/chip8.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/math.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/process.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/pthread_compat.h \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sdkddkver.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/setjmp.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdarg.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stddef.h \
@@ -159,7 +163,9 @@ CMakeFiles/Chip8.dir/src/chip8.c.obj: C:/dev/_projects/Chip8/src/chip8.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/string.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sys/types.h \
+  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/time.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/vadefs.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/winapifamily.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/winsdkver.h \
@@ -215,7 +221,9 @@ CMakeFiles/Chip8.dir/src/chip8.c.obj: C:/dev/_projects/Chip8/src/chip8.c \
   C:/dev/_projects/Chip8/include/SDL2/SDL_video.h \
   C:/dev/_projects/Chip8/include/SDL2/begin_code.h \
   C:/dev/_projects/Chip8/include/SDL2/close_code.h \
-  C:/dev/_projects/Chip8/include/common.h
+  C:/dev/_projects/Chip8/include/chip8.h \
+  C:/dev/_projects/Chip8/include/common.h \
+  C:/dev/_projects/Chip8/include/stack.h
 
 CMakeFiles/Chip8.dir/src/main.c.obj: C:/dev/_projects/Chip8/src/main.c \
   C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/adxintrin.h \
@@ -455,6 +463,8 @@ C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxbf16
 C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/rtmintrin.h:
 
 C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxtf32intrin.h:
+
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/ammintrin.h:
 
@@ -750,6 +760,8 @@ C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h:
 
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/_timeval.h:
+
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdint.h:
@@ -778,17 +790,27 @@ C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/process.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h:
 
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/pthread_compat.h:
+
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stddef.h:
+
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/pthread_time.h:
+
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/setjmp.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdarg.h:
 
-C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stddef.h:
-
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdio.h:
 
+C:/dev/_projects/Chip8/include/chip8.h:
+
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/swprintf.inl:
+
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/sys/timeb.h:
+
+C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/time.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/vadefs.h:
 
@@ -863,5 +885,7 @@ C:/dev/_projects/Chip8/include/SDL2/begin_code.h:
 C:/dev/_projects/Chip8/include/SDL2/close_code.h:
 
 C:/dev/_projects/Chip8/include/common.h:
+
+C:/dev/_projects/Chip8/include/stack.h:
 
 C:/dev/_projects/Chip8/src/main.c:

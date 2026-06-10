@@ -176,6 +176,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/stack.obj: src/stack.c.obj
+.PHONY : src/stack.obj
+
+# target to build an object file
+src/stack.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/stack.c.obj
+.PHONY : src/stack.c.obj
+
+src/stack.i: src/stack.c.i
+.PHONY : src/stack.i
+
+# target to preprocess a source file
+src/stack.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/stack.c.i
+.PHONY : src/stack.c.i
+
+src/stack.s: src/stack.c.s
+.PHONY : src/stack.s
+
+# target to generate assembly for a file
+src/stack.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chip8.dir\build.make CMakeFiles/Chip8.dir/src/stack.c.s
+.PHONY : src/stack.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/stack.obj
+	@echo ... src/stack.i
+	@echo ... src/stack.s
 .PHONY : help
 
 
