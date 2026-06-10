@@ -8,11 +8,11 @@ typedef struct {
 
     /* MEMORY */
 
-    uint8_t memory[MEMORY_SIZE]; // RAM: 4 KiB
-    uint8_t V[16]; // Registers: general purpose
+    uint8_t  memory[MEMORY_SIZE]; // RAM: 4 KiB
+    uint16_t PC; // Register for instructions in memory
 
-    uint16_t PC; // Program Counter: pointer to instruction in memory
-    uint16_t I;  // Index: pointer to locations in memory
+    uint8_t  V[16]; // Registers: general purpose
+    uint16_t I;     // Register for memory addresses
 
     Stack stack;
 
@@ -42,8 +42,7 @@ void Chip8_render(Chip8* chip8, SDL_Texture* tex);
 /* CYCLE */
 
 uint16_t Chip8_fetch(Chip8* chip8);
-void Chip8_decode(Chip8* chip8, uint16_t instruction);
-void Chip8_execute(Chip8* chip8);
+void Chip8_decode_execute(Chip8* chip8, uint16_t instruction);
 
 
 #endif

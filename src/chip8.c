@@ -10,7 +10,6 @@
 void
 Chip8_init(Chip8* chip8) {
     *chip8 = (Chip8) {
-        .PC = 0,
         .font = {
             0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
             0x20, 0x60, 0x20, 0x20, 0x70, // 1
@@ -94,7 +93,9 @@ Chip8_render(Chip8* chip8, SDL_Texture* tex) {
 
         for (int x = 0; x < CHIP8_WIDTH; x++) {
 
-            targetPixel = (uint32_t*) ((uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t)));
+            targetPixel = (uint32_t*) (
+                (uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t))
+            );
 
             col = row + (x / 8);
 
@@ -124,7 +125,7 @@ Chip8_fetch(Chip8* chip8) {
 /* DECODE INSTRUCTION */
 
 void
-Chip8_decode(Chip8* chip8, uint16_t instruction) {
+Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
     uint8_t n[NIBBLES] = {
         (instruction >> 12) & 0xF,
         (instruction >> 8) & 0xF,
@@ -155,10 +156,27 @@ Chip8_decode(Chip8* chip8, uint16_t instruction) {
         uint8_t y = chip8->V[(instruction & 0x00F0) >> 4];
         uint8_t height = (instruction & 0xF);
 
-        // get offset
+        // find byte of x,y in display
 
-        for (int i = chip8->I; i < n; i++) {
+        uint8_t* start = &chip8->display[(y * CHIP8_WIDTH / 8) + x];
 
+        // find offset
+
+        int offset = (x % 8);
+        int copy;
+        int copyoff;
+
+        for (int i = 0; i < n[3]; i++) {
+            // save a copy
+            copy =
+                (*(start + i) ^ chip8->memory[chip8->I + i]) >> (8 - offset);
+
+            copyoff =
+                (*(start + i) ^ chip8->memory[chip8->I + i]) >> offset;
+
+            // start drawing, accounting for the offset
+
+            *(start + i) = copy & copyoff;
         }
 
 
@@ -166,10 +184,6 @@ Chip8_decode(Chip8* chip8, uint16_t instruction) {
 
 }
 
-void
-Chip8_execute(Chip8* chip8) {
-
-}
 
 
 #endif
