@@ -11,8 +11,8 @@ typedef struct {
     uint8_t memory[MEMORY_SIZE]; // RAM: 4 KiB
     uint8_t V[16]; // Registers: general purpose
 
-    uint8_t   PC; // Program Counter: pointer to instruction in memory
-    uint16_t* I;  // Index: pointer to locations in memory
+    uint16_t PC; // Program Counter: pointer to instruction in memory
+    uint16_t I;  // Index: pointer to locations in memory
 
     Stack stack;
 
@@ -24,7 +24,10 @@ typedef struct {
     /* DISPLAY */
 
     uint8_t font[5 * 16]; // 16 characters, each with height of 5
+    // TODO: Load this at runtime
+
     uint8_t display[CHIP8_HEIGHT][CHIP8_WIDTH / 8]; // 64 x 32 B&W pixels
+    // TODO: Make this a 1D array
 
 } Chip8;
 

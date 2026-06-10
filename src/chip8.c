@@ -88,7 +88,7 @@ Chip8_render(Chip8 chip8, SDL_Texture* tex) {
     for (int y = 0; y < CHIP8_HEIGHT; y++) {
         for (int x = 0; x < CHIP8_WIDTH; x++) {
 
-            targetPixel = (uint32_t*) (pixels + (y * pitch) + (x * sizeof(uint32_t)));
+            targetPixel = (uint32_t*) ((uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t)));
 
             pix = (chip8.display[y][x / 8] >> (7 - (x % 8))) & 0x1;
 
@@ -106,7 +106,7 @@ Chip8_render(Chip8 chip8, SDL_Texture* tex) {
 uint16_t
 Chip8_fetch(Chip8* chip8) {
     uint16_t instruction = 0x0;
-    uint8_t PC = chip8->PC;
+    uint16_t PC = chip8->PC;
 
     instruction += (chip8->memory[PC++] << 8);
     instruction += chip8->memory[PC];
