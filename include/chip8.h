@@ -26,7 +26,7 @@ typedef struct {
     uint8_t font[5 * 16]; // 16 characters, each with height of 5
     // TODO: Load this at runtime
 
-    uint8_t display[CHIP8_HEIGHT * CHIP8_WIDTH / 8]; // 64 x 32 B&W pixels
+    uint8_t display[CHIP8_HEIGHT * CHIP8_COL]; // 64 x 32 B&W pixels
 
 } Chip8;
 

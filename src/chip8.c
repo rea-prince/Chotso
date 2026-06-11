@@ -158,27 +158,45 @@ Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
 
         // find byte of x,y in display
 
-        uint8_t* start = &chip8->display[(y * CHIP8_WIDTH / 8) + x];
+        uint8_t* start = &chip8->display[(y * CHIP8_COL) + (x / 8)];
+        int offset = x % 8;
 
-        // find offset
-
-        int offset = (x % 8);
-        int copy;
-        int copyoff;
+        chip8->V[0xF] = 0;
 
         for (int i = 0; i < n[3]; i++) {
-            // save a copy
-            copy =
-                (*(start + i) ^ chip8->memory[chip8->I + i]) >> (8 - offset);
 
-            copyoff =
-                (*(start + i) ^ chip8->memory[chip8->I + i]) >> offset;
+            // get sprite
 
-            // start drawing, accounting for the offset
+            uint8_t sprite = chip8->memory[chip8->I + i];
 
-            *(start + i) = copy & copyoff;
+            // find row
+
+            uint8_t* row = start + (i * CHIP8_WIDTH / 8);
+
+            // left and right to account for offset
+
+            uint8_t left  = sprite >> offset;
+            uint8_t right = sprite << (8 - offset);
+
+            if (*row & left) {
+                chip8->V[0xF] = 1;
+            }
+
+            // xor the sprite
+
+            *row ^= left;
+
+            if (offset != 0) {
+
+                // xor the next byte incase x,y is offset
+
+                if (*(row + 1) & right) {
+                    chip8->V[0xF] = 1;
+                }
+
+                *(row + 1) ^= right;
+            }
         }
-
 
     }
 
