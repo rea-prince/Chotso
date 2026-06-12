@@ -158,43 +158,46 @@ Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
 
         // find byte of x,y in display
 
-        uint8_t* start = &chip8->display[(y * CHIP8_COL) + (x / 8)];
         int offset = x % 8;
 
         chip8->V[0xF] = 0;
 
-        for (int i = 0; i < n[3]; i++) {
+        for (int spriteRow = 0; spriteRow < height; spriteRow++) {
 
             // get sprite
 
-            uint8_t sprite = chip8->memory[chip8->I + i];
+            uint8_t sprite = chip8->memory[chip8->I + spriteRow];
 
-            // find row
+            // actual y coordinate accounting for wrapping
 
-            uint8_t* row = start + (i * CHIP8_WIDTH / 8);
+            uint8_t py = (y + spriteRow) % CHIP8_HEIGHT;
+
+            uint8_t* row = &chip8->display[py * CHIP8_COL + (x / 8)];
 
             // left and right to account for offset
 
             uint8_t left  = sprite >> offset;
             uint8_t right = sprite << (8 - offset);
 
+            // check for shared bits (overwritten); check spec
+
             if (*row & left) {
                 chip8->V[0xF] = 1;
             }
 
-            // xor the sprite
-
             *row ^= left;
 
-            if (offset != 0) {
+            if (offset) {
+                uint8_t* next = row + 1;
 
-                // xor the next byte incase x,y is offset
-
-                if (*(row + 1) & right) {
-                    chip8->V[0xF] = 1;
+                if (x + 8 > CHIP8_WIDTH) {
+                    next = &chip8->display[py * CHIP8_COL];
                 }
 
-                *(row + 1) ^= right;
+                if (*next & right)
+                    chip8->V[0xF] = 1;
+
+                *next ^= right;
             }
         }
 

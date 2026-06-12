@@ -8,12 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/5C8AD9B28AD988C2/dev/_projects/Chotso/src/chip8.c" "CMakeFiles/Chip8.dir/src/chip8.c.o" "gcc" "CMakeFiles/Chip8.dir/src/chip8.c.o.d"
-  "/mnt/5C8AD9B28AD988C2/dev/_projects/Chotso/src/helpers.c" "CMakeFiles/Chip8.dir/src/helpers.c.o" "gcc" "CMakeFiles/Chip8.dir/src/helpers.c.o.d"
-  "/mnt/5C8AD9B28AD988C2/dev/_projects/Chotso/src/instructions.c" "CMakeFiles/Chip8.dir/src/instructions.c.o" "gcc" "CMakeFiles/Chip8.dir/src/instructions.c.o.d"
-  "/mnt/5C8AD9B28AD988C2/dev/_projects/Chotso/src/main.c" "CMakeFiles/Chip8.dir/src/main.c.o" "gcc" "CMakeFiles/Chip8.dir/src/main.c.o.d"
-  "/mnt/5C8AD9B28AD988C2/dev/_projects/Chotso/src/stack.c" "CMakeFiles/Chip8.dir/src/stack.c.o" "gcc" "CMakeFiles/Chip8.dir/src/stack.c.o.d"
-  "" "Chip8" "gcc" "CMakeFiles/Chip8.dir/link.d"
+  "C:/dev/_projects/Chip8/src/chip8.c" "CMakeFiles/Chip8.dir/src/chip8.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/chip8.c.obj.d"
+  "C:/dev/_projects/Chip8/src/helpers.c" "CMakeFiles/Chip8.dir/src/helpers.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/helpers.c.obj.d"
+  "C:/dev/_projects/Chip8/src/instructions.c" "CMakeFiles/Chip8.dir/src/instructions.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/instructions.c.obj.d"
+  "C:/dev/_projects/Chip8/src/main.c" "CMakeFiles/Chip8.dir/src/main.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/main.c.obj.d"
+  "C:/dev/_projects/Chip8/src/stack.c" "CMakeFiles/Chip8.dir/src/stack.c.obj" "gcc" "CMakeFiles/Chip8.dir/src/stack.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
