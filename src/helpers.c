@@ -7,8 +7,9 @@
 void
 handle_input(SDL_Event* windowEvent, bool* running) {
     while (SDL_PollEvent(windowEvent)) {
-        if (SDL_QUIT == windowEvent->type)
+        if (SDL_QUIT == windowEvent->type) {
             *running = false;
+        }
     }
 }
 
@@ -43,7 +44,7 @@ update_texture(Chip8* chip8, SDL_Texture* tex) {
 
             pix = (chip8->display[col] >> (7 - (x % 8))) & 0x1;
 
-            color = pix ? 0xFFFFFFFF : 0x000000FF;
+            color = pix ? 0x00FF00FF : 0x000000FF;
 
             *targetPixel = color;
         }
@@ -53,11 +54,13 @@ update_texture(Chip8* chip8, SDL_Texture* tex) {
 }
 
 int
-init_SDL(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* tex) {
-    SDL_Init( SDL_INIT_EVERYTHING );
+init_SDL(SDL_Window** window, SDL_Renderer** renderer, SDL_Texture** tex) {
+    if (SDL_Init( SDL_INIT_EVERYTHING ) == 01) {
+        return -1;
+    }
 
-    window = SDL_CreateWindow(
-        "My renderer",
+    *window = SDL_CreateWindow(
+        "Chotso",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         WINDOW_WIDTH, WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
@@ -67,31 +70,31 @@ init_SDL(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* tex) {
         return -1;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
-    if (!renderer) {
-        SDL_DestroyWindow(window);
+    *renderer = SDL_CreateRenderer(*window, -1, 0);
+    if (!*renderer) {
+        SDL_DestroyWindow(*window);
         SDL_Quit();
         return -1;
     }
-    SDL_SetRenderTarget(renderer, NULL);
+    SDL_SetRenderTarget(*renderer, NULL);
 
-    tex = SDL_CreateTexture(
-        renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING,
+    *tex = SDL_CreateTexture(
+        *renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING,
         CHIP8_WIDTH, CHIP8_HEIGHT
     );
     if (!tex) {
-        SDL_DestroyWindow(window);
-        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(*window);
+        SDL_DestroyRenderer(*renderer);
         SDL_Quit();
         return -1;
     }
 
     SDL_SetRenderDrawColor( // background color (rgba)
-        renderer,
+        *renderer,
         120, 180, 255,
         255
     );
-    SDL_RenderSetScale(renderer, W_SCALE, H_SCALE);
+    SDL_RenderSetScale(*renderer, W_SCALE, H_SCALE);
 
     return 1;
 }

@@ -31,7 +31,8 @@
 
 // settings
 
-#define TPS 60.0f
+#define DISPLAY_HZ 60.0f
+#define CHIP8_HZ 1000.0f
 #define TEST_ROM "../data/"
 
 

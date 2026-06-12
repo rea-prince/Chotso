@@ -446,7 +446,9 @@ CMakeFiles/Chip8.dir/src/helpers.c.obj: C:/dev/_projects/Chip8/src/helpers.c \
   C:/dev/_projects/Chip8/include/SDL2/SDL_video.h \
   C:/dev/_projects/Chip8/include/SDL2/begin_code.h \
   C:/dev/_projects/Chip8/include/SDL2/close_code.h \
-  C:/dev/_projects/Chip8/include/common.h
+  C:/dev/_projects/Chip8/include/chip8.h \
+  C:/dev/_projects/Chip8/include/common.h \
+  C:/dev/_projects/Chip8/include/stack.h
 
 CMakeFiles/Chip8.dir/src/instructions.c.obj: C:/dev/_projects/Chip8/src/instructions.c \
   C:/ProgramData/mingw64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/adxintrin.h \

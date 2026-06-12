@@ -13,6 +13,7 @@ typedef struct {
 
     uint8_t  V[16]; // Registers: general purpose
     uint16_t I;     // Register for memory addresses
+    uint16_t instruction;
 
     Stack stack;
 
@@ -41,8 +42,8 @@ void Chip8_load(Chip8* chip8, FILE* src);
 
 /* CYCLE */
 
-uint16_t Chip8_fetch(Chip8* chip8);
-void Chip8_decode_execute(Chip8* chip8, uint16_t instruction);
+void Chip8_fetch(Chip8* chip8);
+void Chip8_decode_execute(Chip8* chip8);
 
 
 #endif

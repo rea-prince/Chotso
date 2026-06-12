@@ -49,20 +49,23 @@ Chip8_load(Chip8* chip8, FILE* src) {
 
 /* FETCH INSTRUCTION */
 
-uint16_t
+void
 Chip8_fetch(Chip8* chip8) {
-    uint16_t instruction = 0x0;
+    uint16_t instruction =
+        (chip8->memory[chip8->PC] << 8) |
+         chip8->memory[chip8->PC + 1];
+    chip8->PC += 2;
 
-    instruction += (chip8->memory[chip8->PC++] << 8);
-    instruction += chip8->memory[chip8->PC];
-
-    return instruction;
+    chip8->instruction = instruction;
 }
 
 /* DECODE INSTRUCTION */
 
 void
-Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
+Chip8_decode_execute(Chip8* chip8) {
+
+    uint16_t instruction = chip8->instruction;
+
     uint8_t n[NIBBLES] = {
         (instruction >> 12) & 0xF,
         (instruction >> 8) & 0xF,
@@ -92,6 +95,8 @@ Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
         uint8_t x = chip8->V[(instruction & 0x0F00) >> 8];
         uint8_t y = chip8->V[(instruction & 0x00F0) >> 4];
         uint8_t height = (instruction & 0xF);
+
+        // printf("DRAW x=%d y=%d h=%d\n", x, y, height);
 
         // find byte of x,y in display
 
@@ -141,6 +146,7 @@ Chip8_decode_execute(Chip8* chip8, uint16_t instruction) {
 }
 
 /* CYCLE */
+
 
 
 
