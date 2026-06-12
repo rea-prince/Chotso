@@ -6,70 +6,51 @@ int main(int argc, char *argv[]) {
 
     /* INITIALIZATION */
 
-    SDL_Init( SDL_INIT_EVERYTHING );
-    SDL_Window *window_ptr = SDL_CreateWindow(
-        "My renderer",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        WINDOW_WIDTH, WINDOW_HEIGHT,
-        SDL_WINDOW_SHOWN
-    );
-    if (!window_ptr) {
-        SDL_Quit();
-        return -1;
+    SDL_Window*   window;
+    SDL_Renderer* renderer;
+    SDL_Texture*  tex;
+
+    if (init_SDL(window, renderer, tex) == -1) {
+        printf("Error loading SDL\n");
+        return EXIT_FAILURE;
     }
-    SDL_Renderer *renderer = SDL_CreateRenderer(window_ptr, -1, 0);
-    if (!renderer) {
-        SDL_DestroyWindow(window_ptr);
-        SDL_Quit();
-        return -1;
+
+    /* -------------- */
+
+    Chip8* chip8;
+    Chip8_init(chip8);
+
+    FILE* instructions = fopen(TEST_ROM, "rb");
+    if (!instructions) {
+        printf("Error loading instructions\n");
+        return EXIT_FAILURE;
     }
-    SDL_SetRenderTarget(renderer, NULL);
+    Chip8_load(chip8, instructions);
 
-
-    /* ------------------------------------------- */
-
-    SDL_Event windowEvent; // input
+    SDL_Event windowEvent;
     bool running = true;
-    SDL_SetRenderDrawColor( // background color (rgba)
-        renderer,
-        120, 180, 255,
-        255
-    );
 
-    /* STUFF */
-
-    SDL_Texture *tex = SDL_CreateTexture(
-        renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING,
-        CHIP8_WIDTH, CHIP8_HEIGHT
-    );
-    Chip8 chip8;
-    Chip8_init(&chip8);
-    SDL_RenderSetScale(renderer, W_SCALE, H_SCALE);
-
-    /* MAIN LOOP */
+    uint16_t instruction;
 
     while (running) {
         handle_input(&windowEvent, &running);
-        SDL_RenderClear(renderer);
+
+        /* AWAIT CLOCK */
 
         /* RUN CHIP */
 
-        // fetch
-        // decode
-        // execute
+
+        instruction = Chip8_fetch(chip8);
+        Chip8_decode_execute(chip8, instruction);
+
 
         /* DRAW */
 
-        Chip8_render(&chip8, tex);
-        SDL_RenderCopy(renderer, tex, NULL, NULL);
-        SDL_RenderPresent(renderer);
+        update_texture(chip8, tex);
+        render_SDL(renderer, tex);
     }
 
-    SDL_DestroyTexture(tex);
+    destroy_SDL(window, renderer, tex);
 
-    /* DESTROY WINDOW */
-
-    SDL_DestroyWindow(window_ptr);
-    SDL_Quit();
     return EXIT_SUCCESS;
 }

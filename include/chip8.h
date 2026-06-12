@@ -31,7 +31,7 @@ typedef struct {
 } Chip8;
 
 void Chip8_init(Chip8* chip8);
-void Chip8_render(Chip8* chip8, SDL_Texture* tex);
+void Chip8_load(Chip8* chip8, FILE* src);
 
 /* DELAY */
 

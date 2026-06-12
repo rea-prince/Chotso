@@ -32,6 +32,7 @@
 // settings
 
 #define TPS 60.0f
+#define TEST_ROM "../data/"
 
 
 /* FOR SDL */
