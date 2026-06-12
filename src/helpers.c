@@ -4,53 +4,61 @@
 #include "common.h"
 #include "chip8.h"
 
-void
-handle_input(SDL_Event* windowEvent, bool* running) {
-    while (SDL_PollEvent(windowEvent)) {
-        if (SDL_QUIT == windowEvent->type) {
-            *running = false;
-        }
+/* MAP KEYS */
+
+static inline uint8_t
+map_keys(uint32_t key) {
+    switch(key) {
+        case SDLK_1: return 1;
+        case SDLK_2: return 2;
+        case SDLK_3: return 3;
+        case SDLK_4: return 4;
+
+        case SDLK_q: return 4;
+        case SDLK_w: return 5;
+        case SDLK_e: return 6;
+        case SDLK_r: return 0xD;
+
+        case SDLK_a: return 7;
+        case SDLK_s: return 8;
+        case SDLK_d: return 9;
+        case SDLK_f: return 0xE;
+
+        case SDLK_z: return 0xA;
+        case SDLK_x: return 0x0;
+        case SDLK_c: return 0xB;
+        case SDLK_v: return 0xF;
     }
+
+    return -1;
 }
 
-/* Render Image */
-
 void
-update_texture(Chip8* chip8, SDL_Texture* tex) {
+handle_input(SDL_Event* event, Chip8* chip8) {
+    while (SDL_PollEvent(event)) {
+        if (event->type == SDL_QUIT) {
+            chip8->run = false;
+            return;
+        }
 
-    void* pixels;
-    int   pitch;
+        if (event->key.keysym.sym == SDL_KEYDOWN) {
+            if (event->type == SDLK_ESCAPE) {
+                chip8->run = false;
+                return;
+            }
+            int8_t key = map_keys(event->key.keysym.sym);
+            if (key != -1) {
+                chip8->keys[key] = 1;
+            }
+        }
 
-    uint32_t* targetPixel;
-    uint32_t  color;
-    uint8_t   pix;
-
-    int row;
-    int col;
-
-    SDL_LockTexture(tex, NULL, &pixels, &pitch);
-
-    for (int y = 0; y < CHIP8_HEIGHT; y++) {
-
-        row = y * CHIP8_WIDTH / 8;
-
-        for (int x = 0; x < CHIP8_WIDTH; x++) {
-
-            targetPixel = (uint32_t*) (
-                (uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t))
-            );
-
-            col = row + (x / 8);
-
-            pix = (chip8->display[col] >> (7 - (x % 8))) & 0x1;
-
-            color = pix ? 0x00FF00FF : 0x000000FF;
-
-            *targetPixel = color;
+        if (event->type == SDL_KEYUP) {
+            int8_t key = map_keys(event->key.keysym.sym);
+            if (key != -1) {
+                chip8->keys[key] = 0;
+            }
         }
     }
-
-    SDL_UnlockTexture(tex);
 }
 
 int
@@ -112,6 +120,47 @@ render_SDL(SDL_Renderer* renderer, SDL_Texture* tex) {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, tex, NULL, NULL);
     SDL_RenderPresent(renderer);
+}
+
+
+/* Render Image */
+
+void
+update_texture(Chip8* chip8, SDL_Texture* tex) {
+
+    void* pixels;
+    int   pitch;
+
+    uint32_t* targetPixel;
+    uint32_t  color;
+    uint8_t   pix;
+
+    int row;
+    int col;
+
+    SDL_LockTexture(tex, NULL, &pixels, &pitch);
+
+    for (int y = 0; y < CHIP8_HEIGHT; y++) {
+
+        row = y * CHIP8_WIDTH / 8;
+
+        for (int x = 0; x < CHIP8_WIDTH; x++) {
+
+            targetPixel = (uint32_t*) (
+                (uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t))
+            );
+
+            col = row + (x / 8);
+
+            pix = (chip8->display[col] >> (7 - (x % 8))) & 0x1;
+
+            color = pix ? 0x00FF00FF : 0x000000FF;
+
+            *targetPixel = color;
+        }
+    }
+
+    SDL_UnlockTexture(tex);
 }
 
 #endif

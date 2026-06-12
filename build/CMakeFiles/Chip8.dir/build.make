@@ -163,9 +163,9 @@ Chip8.exe: CMakeFiles/Chip8.dir/src/instructions.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/src/main.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/src/stack.c.obj
 Chip8.exe: CMakeFiles/Chip8.dir/build.make
-Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2main.a
-Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2.a
-Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/win/libSDL2_image.a
+Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/libSDL2main.a
+Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/libSDL2.a
+Chip8.exe: C:/dev/_projects/Chip8/lib/SDL2/libSDL2_image.a
 Chip8.exe: CMakeFiles/Chip8.dir/linkLibs.rsp
 Chip8.exe: CMakeFiles/Chip8.dir/objects1.rsp
 Chip8.exe: CMakeFiles/Chip8.dir/link.txt

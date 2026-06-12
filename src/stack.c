@@ -6,7 +6,7 @@
 
 Stack
 Stack_create() {
-    return (Stack) { .size = STACK_SIZE };
+    return (Stack) { .size = CHIP8_STACK_SIZE };
 }
 
 uint16_t

@@ -8,7 +8,6 @@
 
 #include <math.h>
 #include <string.h>
-#include <ctype.h>
 #include <time.h>
 
 /* LIBRARIES */
@@ -20,8 +19,10 @@
 
 // struct sizing
 
-#define MEMORY_SIZE 4096 // 4 KiB
-#define STACK_SIZE 48    // 48 B
+#define CHIP8_MEMORY_SIZE 4096 // 4 KiB
+#define CHIP8_STACK_SIZE 48    // 48 B
+#define CHIP8_KEYS 16
+#define CHIP8_WAIT CHIP8_KEYS
 
 #define CHIP8_HEIGHT 32
 #define CHIP8_WIDTH 64
@@ -31,10 +32,10 @@
 
 // settings
 
-#define DISPLAY_HZ 60.0f
-#define CHIP8_HZ 1000.0f
-#define TEST_ROM "../data/"
+#define DISPLAY_HZ 60
+#define CHIP8_HZ 500
 
+#define SHIFT
 
 /* FOR SDL */
 

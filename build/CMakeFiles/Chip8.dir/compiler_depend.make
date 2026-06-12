@@ -136,10 +136,8 @@ CMakeFiles/Chip8.dir/src/chip8.c.obj: C:/dev/_projects/Chip8/src/chip8.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/intrin.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -361,10 +359,8 @@ CMakeFiles/Chip8.dir/src/helpers.c.obj: C:/dev/_projects/Chip8/src/helpers.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/intrin.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -585,10 +581,8 @@ CMakeFiles/Chip8.dir/src/instructions.c.obj: C:/dev/_projects/Chip8/src/instruct
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/intrin.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -672,6 +666,7 @@ CMakeFiles/Chip8.dir/src/instructions.c.obj: C:/dev/_projects/Chip8/src/instruct
   C:/dev/_projects/Chip8/include/SDL2/close_code.h \
   C:/dev/_projects/Chip8/include/chip8.h \
   C:/dev/_projects/Chip8/include/common.h \
+  C:/dev/_projects/Chip8/include/helpers.h \
   C:/dev/_projects/Chip8/include/stack.h
 
 CMakeFiles/Chip8.dir/src/main.c.obj: C:/dev/_projects/Chip8/src/main.c \
@@ -809,10 +804,8 @@ CMakeFiles/Chip8.dir/src/main.c.obj: C:/dev/_projects/Chip8/src/main.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/intrin.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -1034,10 +1027,8 @@ CMakeFiles/Chip8.dir/src/stack.c.obj: C:/dev/_projects/Chip8/src/stack.c \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/intrin.h \
   C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -1451,13 +1442,9 @@ C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/stdint.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h:
 
-C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h:
-
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/crtdefs.h:
-
-C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/ctype.h:
 
 C:/ProgramData/mingw64/mingw64/x86_64-w64-mingw32/include/errno.h:
 
@@ -1575,8 +1562,8 @@ C:/dev/_projects/Chip8/include/stack.h:
 
 C:/dev/_projects/Chip8/src/instructions.c:
 
-C:/dev/_projects/Chip8/src/main.c:
-
 C:/dev/_projects/Chip8/include/helpers.h:
+
+C:/dev/_projects/Chip8/src/main.c:
 
 C:/dev/_projects/Chip8/src/stack.c:

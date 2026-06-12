@@ -8,25 +8,29 @@ typedef struct {
 
     /* MEMORY */
 
-    uint8_t  memory[MEMORY_SIZE]; // RAM: 4 KiB
-    uint16_t PC; // Register for instructions in memory
+    uint8_t  memory[CHIP8_MEMORY_SIZE]; // RAM: 4 KiB
+    uint8_t  V[16]; // general purpose registers
+    uint16_t PC;    // register for memory addresses
+    uint16_t I;     // register for data
 
-    uint8_t  V[16]; // Registers: general purpose
-    uint16_t I;     // Register for memory addresses
-    uint16_t instruction;
+    /* STACK */
 
-    Stack stack;
+    uint16_t stack[CHIP8_STACK_SIZE];
+    uint8_t  SP;
 
     /* TIMERS */
 
     uint8_t DT; // delay timer
     uint8_t ST; // sound timer
 
-    /* DISPLAY */
+    /* DISPLAY AND INPUT */
 
-    uint8_t font[5 * 16]; // 16 characters, each with height of 5
-    // TODO: Load this at runtime
+    uint8_t keys[CHIP8_KEYS]; // 1 down; 0 up
 
+    uint8_t waiting; // waiting bool
+    uint8_t WR;      // wait register
+
+    uint8_t run;
     uint8_t display[CHIP8_HEIGHT * CHIP8_COL]; // 64 x 32 B&W pixels
 
 } Chip8;
@@ -34,16 +38,9 @@ typedef struct {
 void Chip8_init(Chip8* chip8);
 void Chip8_load(Chip8* chip8, FILE* src);
 
-/* DELAY */
-
-
-/* SOUND */
-
-
 /* CYCLE */
 
-void Chip8_fetch(Chip8* chip8);
-void Chip8_decode_execute(Chip8* chip8);
+void Chip8_cycle(Chip8* chip8);
 
 
 #endif

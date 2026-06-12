@@ -33,30 +33,40 @@ int main(int argc, char* argv[]) {
     }
     Chip8_load(&chip8, instructions);
 
-    SDL_Event windowEvent;
-    bool      running = true;
+    /* -------------- */
 
-    uint64_t tick      = SDL_GetTicks();
-    uint64_t lastTime  = SDL_GetTicks();
-    uint64_t lastCycle = SDL_GetTicks();
-    uint64_t now;
+    SDL_Event event;
 
-    while (running) {
-        handle_input(&windowEvent, &running);
+    uint64_t now       = SDL_GetTicks();
+    uint64_t tick      = now;
+    uint64_t lastTime  = now;
+    uint64_t lastCycle = now;
+
+    srand(time(NULL));
+
+    while (chip8.run) {
+        handle_input(&event, &chip8);
         now = SDL_GetTicks();
 
-        /* CLOCK CYCLE */
+        /* CLOCK CYCLE @ 500Hz */
 
-        if (now - lastCycle >= (1000.0f / CHIP8_HZ)) {
+        if (chip8.waiting) {
+            for (int i = 0; i < CHIP8_KEYS; i++) {
+                if (chip8.keys[i]) {
+                    chip8.V[chip8.WR] = i;
+                    chip8.waiting = 0;
+                    break;
+                }
+            }
+        } else if (now - lastCycle >= (1000 / CHIP8_HZ)) {
             lastCycle = now;
-            Chip8_fetch(&chip8);
-            Chip8_decode_execute(&chip8);
+            Chip8_cycle(&chip8);
         }
 
         /* TIMERS @ 60Hz */
 
-        if (SDL_GetTicks() - tick >= (1000.0f / DISPLAY_HZ)) {
-            tick = SDL_GetTicks();
+        if (now - tick >= (1000 / DISPLAY_HZ)) {
+            tick = now;
             if (chip8.DT > 0) {
                 --chip8.DT;
             }

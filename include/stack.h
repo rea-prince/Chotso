@@ -4,7 +4,7 @@
 #include "common.h"
 
 typedef struct {
-    uint16_t stack[STACK_SIZE];
+    uint16_t stack[CHIP8_STACK_SIZE];
     uint16_t top;
     uint16_t size;
 } Stack;

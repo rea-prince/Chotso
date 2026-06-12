@@ -31,9 +31,9 @@ if(WIN32)
     PUBLIC
 
     mingw32
-    ${CMAKE_SOURCE_DIR}/lib/SDL2/win/libSDL2main.a
-    ${CMAKE_SOURCE_DIR}/lib/SDL2/win/libSDL2.a
-    ${CMAKE_SOURCE_DIR}/lib/SDL2/win/libSDL2_image.a
+    ${CMAKE_SOURCE_DIR}/lib/SDL2/libSDL2main.a
+    ${CMAKE_SOURCE_DIR}/lib/SDL2/libSDL2.a
+    ${CMAKE_SOURCE_DIR}/lib/SDL2/libSDL2_image.a
 
     # windows libraries
     imm32 setupapi winmm gdi32 ole32 oleaut32 uuid version
