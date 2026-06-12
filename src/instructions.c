@@ -205,11 +205,16 @@ ex_D(Chip8* chip8, uint16_t instruction) {
     uint8_t y = chip8->V[(instruction & 0x00F0) >> 4];
     uint8_t height = (instruction & 0xF);
 
-    // printf("DRAW x=%d y=%d h=%d\n", x, y, height);
-
     // find byte of x,y in display
 
     uint8_t offset = x % 8;
+    uint8_t sprite;
+    uint8_t py;
+    uint8_t left;
+    uint8_t right;
+
+    uint8_t* row;
+    uint8_t* next;
 
     chip8->V[0xF] = 0;
 
@@ -217,18 +222,18 @@ ex_D(Chip8* chip8, uint16_t instruction) {
 
         // get sprite
 
-        uint8_t sprite = chip8->memory[chip8->I + spriteRow];
+        sprite = chip8->memory[chip8->I + spriteRow];
 
         // actual y coordinate accounting for wrapping
 
-        uint8_t py = (y + spriteRow) % CHIP8_HEIGHT;
+        py = (y + spriteRow) % CHIP8_HEIGHT;
 
-        uint8_t* row = &chip8->display[py * CHIP8_COL + (x / 8)];
+        row = &chip8->display[py * CHIP8_COL + (x / 8)];
 
         // left and right to account for offset
 
-        uint8_t left  = sprite >> offset;
-        uint8_t right = sprite << (8 - offset);
+        left  = sprite >> offset;
+        right = sprite << (8 - offset);
 
         // check for shared bits (overwritten); check spec
 
@@ -239,7 +244,7 @@ ex_D(Chip8* chip8, uint16_t instruction) {
         *row ^= left;
 
         if (offset) {
-            uint8_t* next = row + 1;
+            next = row + 1;
 
             if (x + 8 > CHIP8_WIDTH) {
                 next = &chip8->display[py * CHIP8_COL];

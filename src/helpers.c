@@ -65,7 +65,7 @@ handle_input(SDL_Event* event, Chip8* chip8) {
 
 int
 init_SDL(SDL_Window** window, SDL_Renderer** renderer, SDL_Texture** tex) {
-    if (SDL_Init( SDL_INIT_EVERYTHING ) == 01) {
+    if (SDL_Init( SDL_INIT_EVERYTHING ) != 0) {
         return -1;
     }
 
@@ -80,7 +80,11 @@ init_SDL(SDL_Window** window, SDL_Renderer** renderer, SDL_Texture** tex) {
         return -1;
     }
 
-    *renderer = SDL_CreateRenderer(*window, -1, 0);
+    *renderer = SDL_CreateRenderer(
+        *window,
+        -1,
+        SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+    );
     if (!*renderer) {
         SDL_DestroyWindow(*window);
         SDL_Quit();
@@ -104,7 +108,7 @@ init_SDL(SDL_Window** window, SDL_Renderer** renderer, SDL_Texture** tex) {
         120, 180, 255,
         255
     );
-    SDL_RenderSetScale(*renderer, W_SCALE, H_SCALE);
+    // SDL_RenderSetScale(*renderer, W_SCALE, H_SCALE);
 
     return 1;
 }
@@ -116,14 +120,6 @@ destroy_SDL(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* tex) {
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
-
-void
-render_SDL(SDL_Renderer* renderer, SDL_Texture* tex) {
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, tex, NULL, NULL);
-    SDL_RenderPresent(renderer);
-}
-
 
 /* Render Image */
 
@@ -144,7 +140,7 @@ update_texture(Chip8* chip8, SDL_Texture* tex) {
 
     for (int y = 0; y < CHIP8_HEIGHT; y++) {
 
-        row = y * CHIP8_WIDTH / 8;
+        row = y * CHIP8_COL;
 
         for (int x = 0; x < CHIP8_WIDTH; x++) {
 
@@ -163,6 +159,13 @@ update_texture(Chip8* chip8, SDL_Texture* tex) {
     }
 
     SDL_UnlockTexture(tex);
+}
+
+void
+render_SDL(SDL_Renderer* renderer, SDL_Texture* tex) {
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, tex, NULL, NULL);
+    SDL_RenderPresent(renderer);
 }
 
 #endif

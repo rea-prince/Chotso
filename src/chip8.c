@@ -139,9 +139,4 @@ Chip8_cycle(Chip8* chip8) {
 
 }
 
-/* CYCLE */
-
-
-
-
 #endif
