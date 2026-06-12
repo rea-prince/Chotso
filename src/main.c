@@ -58,9 +58,12 @@ int main(int argc, char* argv[]) {
                     break;
                 }
             }
-        } else if (now - lastCycle >= (1000 / CHIP8_HZ)) {
+        }
+        if (!chip8.waiting && now - lastCycle >= (1000 / CHIP8_HZ)) {
             lastCycle = now;
             Chip8_cycle(&chip8);
+            printf("V0=%d V1=%d V2=%d V3=%d\n",
+                chip8.V[0], chip8.V[1], chip8.V[2], chip8.V[3]);
         }
 
         /* TIMERS @ 60Hz */

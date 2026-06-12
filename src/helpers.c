@@ -6,13 +6,13 @@
 
 /* MAP KEYS */
 
-static inline uint8_t
+static uint8_t
 map_keys(uint32_t key) {
     switch(key) {
         case SDLK_1: return 1;
         case SDLK_2: return 2;
         case SDLK_3: return 3;
-        case SDLK_4: return 4;
+        case SDLK_4: return 0xC;
 
         case SDLK_q: return 4;
         case SDLK_w: return 5;
@@ -41,14 +41,16 @@ handle_input(SDL_Event* event, Chip8* chip8) {
             return;
         }
 
-        if (event->key.keysym.sym == SDL_KEYDOWN) {
-            if (event->type == SDLK_ESCAPE) {
+        if (event->type == SDL_KEYDOWN) {
+            if (event->key.keysym.sym == SDLK_ESCAPE) {
                 chip8->run = false;
                 return;
             }
             int8_t key = map_keys(event->key.keysym.sym);
             if (key != -1) {
                 chip8->keys[key] = 1;
+                // printf("SDL key: %d -> CHIP8 key: %d\n",
+                //        event->key.keysym.sym, key);
             }
         }
 

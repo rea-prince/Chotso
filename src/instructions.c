@@ -18,12 +18,7 @@ ex_0(Chip8* chip8, uint16_t instruction) {
         // return from a subroutine
 
         case 0x00EE: {
-            chip8->PC = chip8->stack[chip8->SP];
-            --chip8->SP;
-        } break;
-
-        default: {
-            chip8->PC = instruction;
+            chip8->PC = chip8->stack[--chip8->SP];
         } break;
     }
 }
@@ -41,8 +36,7 @@ ex_2(Chip8* chip8, uint16_t instruction) {
 
     // call subroutine at nnn
 
-    ++chip8->SP;
-    chip8->stack[chip8->SP] = instruction;
+    chip8->stack[chip8->SP++] = chip8->PC;
     chip8->PC = instruction & 0x0FFF;
 }
 
@@ -142,7 +136,7 @@ ex_8(Chip8* chip8, uint16_t instruction) {
             /* AMBIGUOUS INSTRUCTION !!! */
 
             chip8->V[0xF] = chip8->V[x] & 0x1;
-            chip8->V[x] = chip8->V[x] >> 2;
+            chip8->V[x] = chip8->V[x] >> 1;
 
         } break;
 
@@ -156,7 +150,7 @@ ex_8(Chip8* chip8, uint16_t instruction) {
             /* AMBIGUOUS INSTRUCTION !!! */
 
             chip8->V[0xF] = chip8->V[x] & 0x80;
-            chip8->V[x] = chip8->V[x] << 2;
+            chip8->V[x] = chip8->V[x] << 1;
 
         } break;
     }
@@ -199,8 +193,7 @@ ex_C(Chip8* chip8, uint16_t instruction) {
 
     // set Vx = random byte AND kk
 
-    chip8->V[instruction & 0xF00] = (uint8_t) rand() + instruction & 0xFF;
-
+    chip8->V[(instruction & 0xF00) >> 8] = (rand() & 0xFF) & (instruction & 0xFF);
 }
 
 void
@@ -265,7 +258,7 @@ ex_E(Chip8* chip8, uint16_t instruction) {
 
     // skip if key at Vx is up/down
 
-    uint16_t key = instruction & 0xF00;
+    uint16_t key = chip8->V[(instruction & 0xF00) >> 8];
 
     switch(instruction & 0xFF) {
         case 0x9E: {
@@ -295,7 +288,6 @@ ex_F(Chip8* chip8, uint16_t instruction) {
         case 0x0A: {
             chip8->waiting = 1;
             chip8->WR      = x;
-            chip8->PC     -= 2;
         } break;
 
         case 0x15: {
@@ -311,23 +303,23 @@ ex_F(Chip8* chip8, uint16_t instruction) {
         } break;
 
         case 0x29: {
-            chip8->I = 0x50 + (x * 5);
+            chip8->I = 0x50 + (chip8->V[x] * 5);
         } break;
 
         case 0x33: {
-            chip8->memory[chip8->I]     = x % 10;
-            chip8->memory[chip8->I + 1] = (x / 10) % 10;
-            chip8->memory[chip8->I + 2] = (x / 10) % 10;
+            chip8->memory[chip8->I + 2] = chip8->V[x] % 10;
+            chip8->memory[chip8->I + 1] = (chip8->V[x] / 10) % 10;
+            chip8->memory[chip8->I]     = chip8->V[x] / 100;
         } break;
 
         case 0x55: {
-            for (int i = 0; i < x; i++) {
+            for (int i = 0; i <= x; i++) {
                 chip8->memory[chip8->I + i] = chip8->V[i];
             }
         } break;
 
         case 0x65: {
-            for (int i = 0; i < x; i++) {
+            for (int i = 0; i <= x; i++) {
                 chip8->V[i] = chip8->memory[chip8->I + i];
             }
         } break;
