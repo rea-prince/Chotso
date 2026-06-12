@@ -77,6 +77,7 @@ int main(int argc, char* argv[]) {
                 --chip8.DT;
             }
             if (chip8.ST > 0) {
+
                 --chip8.ST;
             }
             update_texture(&chip8, tex);

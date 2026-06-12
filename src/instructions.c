@@ -2,7 +2,6 @@
 #define INSTRUCTIONS_C
 
 #include "common.h"
-#include "helpers.h"
 #include "chip8.h"
 
 void

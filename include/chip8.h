@@ -2,7 +2,6 @@
 #define CHIP8_H
 
 #include "common.h"
-#include "stack.h"
 
 typedef struct {
 
