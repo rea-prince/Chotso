@@ -30,6 +30,7 @@ typedef struct {
     uint8_t WR;      // wait register
 
     uint8_t run;
+    uint8_t draw;
     uint8_t display[CHIP8_HEIGHT * CHIP8_COL]; // 64 x 32 B&W pixels
 
 } Chip8;

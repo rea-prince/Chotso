@@ -1,3 +1,0 @@
-C:/dev/_projects/Chip8/build/CMakeFiles/Chip8.dir
-C:/dev/_projects/Chip8/build/CMakeFiles/edit_cache.dir
-C:/dev/_projects/Chip8/build/CMakeFiles/rebuild_cache.dir

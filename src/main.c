@@ -61,8 +61,7 @@ int main(int argc, char* argv[]) {
                     break;
                 }
             }
-        }
-        if (!chip8.waiting && now - lastCycle >= cpuHz) {
+        } else if (now - lastCycle >= cpuHz) {
             lastCycle = now;
             Chip8_cycle(&chip8);
             // printf("V0=%d V1=%d V2=%d V3=%d\n",
@@ -80,10 +79,15 @@ int main(int argc, char* argv[]) {
 
                 --chip8.ST;
             }
+        }
+        if (chip8.draw) {
+            chip8.draw = 0;
             update_texture(&chip8, tex);
             render_SDL(renderer, tex);
+        } else {
+            SDL_Delay(1);
         }
-        SDL_Delay(1);
+
     }
 
     destroy_SDL(window, renderer, tex);

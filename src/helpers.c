@@ -125,40 +125,32 @@ destroy_SDL(SDL_Window* window, SDL_Renderer* renderer, SDL_Texture* tex) {
 
 void
 update_texture(Chip8* chip8, SDL_Texture* tex) {
-
-    void* pixels;
-    int   pitch;
-
-    uint32_t* targetPixel;
-    uint32_t  color;
-    uint8_t   pix;
-
-    int row;
-    int col;
-
-    SDL_LockTexture(tex, NULL, &pixels, &pitch);
+    static uint32_t pixels[CHIP8_WIDTH * CHIP8_HEIGHT];
+    uint8_t row;
+    uint8_t col;
+    uint8_t pix;
 
     for (int y = 0; y < CHIP8_HEIGHT; y++) {
-
         row = y * CHIP8_COL;
 
         for (int x = 0; x < CHIP8_WIDTH; x++) {
 
-            targetPixel = (uint32_t*) (
-                (uint8_t*) pixels + (y * pitch) + (x * sizeof(uint32_t))
-            );
-
             col = row + (x / 8);
 
-            pix = (chip8->display[col] >> (7 - (x % 8))) & 0x1;
+            pix =
+                (chip8->display[col] >> (7 - (x % 8))) & 1;
 
-            color = pix ? 0x00FF00FF : 0x000000FF;
-
-            *targetPixel = color;
+            pixels[y * CHIP8_WIDTH + x] =
+                pix ? 0xFAD48CFF : 0x3C3836FF;
         }
     }
 
-    SDL_UnlockTexture(tex);
+    SDL_UpdateTexture(
+        tex,
+        NULL,
+        pixels,
+        CHIP8_WIDTH * sizeof(uint32_t)
+    );
 }
 
 void

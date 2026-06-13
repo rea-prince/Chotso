@@ -200,8 +200,8 @@ ex_D(Chip8* chip8, uint16_t instruction) {
 
     // display n-byte sprite starting at memory location I at (Vx, Vy), set VF = collision
 
-    uint8_t x = chip8->V[(instruction & 0x0F00) >> 8];
-    uint8_t y = chip8->V[(instruction & 0x00F0) >> 4];
+    uint8_t x = chip8->V[(instruction & 0x0F00) >> 8] & (CHIP8_WIDTH - 1);
+    uint8_t y = chip8->V[(instruction & 0x00F0) >> 4] & (CHIP8_HEIGHT - 1);
     uint8_t height = (instruction & 0xF);
 
     // find byte of x,y in display
@@ -245,16 +245,18 @@ ex_D(Chip8* chip8, uint16_t instruction) {
         if (offset) {
             next = row + 1;
 
-            if (x + 8 > CHIP8_WIDTH) {
+            if ((x / 8) == (CHIP8_COL - 1)) {
                 next = &chip8->display[py * CHIP8_COL];
             }
 
-            if (*next & right)
+            if (*next & right) {
                 chip8->V[0xF] = 1;
+            }
 
             *next ^= right;
         }
     }
+    chip8->draw = 1;
 }
 
 void
