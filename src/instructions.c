@@ -117,7 +117,7 @@ ex_8(Chip8* chip8, uint16_t instruction) {
 
             chip8->V[x] = vx + vy;
 
-            chip8->V[0xF] = ((uint16_t) vx + vy > 255) ? 1 : 0;
+            chip8->V[0xF] = ((uint16_t) vx + vy > 255);
 
         } break;
 
@@ -127,35 +127,46 @@ ex_8(Chip8* chip8, uint16_t instruction) {
 
             chip8->V[x] = vx - vy;
 
-            chip8->V[0xF] = vx > vy ? 1 : 0;
+            chip8->V[0xF] = (vx >= vy);
         } break;
 
         case 0x6: {
 
             /* AMBIGUOUS INSTRUCTION !!! */
 
-            chip8->V[0xF] = chip8->V[x] & 0x1;
-            chip8->V[x] = chip8->V[x] >> 1;
+            uint8_t vx = chip8->V[x];
+
+            uint8_t vf = vx & 1;
+            uint8_t res = vx >> 1;
+
+            chip8->V[x] = res;
+            chip8->V[0xF] = vf;
 
         } break;
 
         case 0x7: {
-            chip8->V[0xF] = (chip8->V[y] > chip8->V[x]);
-            chip8->V[x] = chip8->V[y] - chip8->V[x];
+            uint8_t vx = chip8->V[x];
+            uint8_t vy = chip8->V[y];
+
+            chip8->V[x] = vy - vx;
+
+            chip8->V[0xF] = (vy >= vx);
         } break;
 
         case 0xE: {
 
             /* AMBIGUOUS INSTRUCTION !!! */
 
-            chip8->V[0xF] = chip8->V[x] & 0x80;
-            chip8->V[x] = chip8->V[x] << 1;
+            uint8_t vx = chip8->V[x];
+
+            uint8_t vf = (vx >> 7) & 1;
+            uint8_t res = vx << 1;
+
+            chip8->V[x] = res;
+            chip8->V[0xF] = vf;
 
         } break;
     }
-
-
-
 }
 
 void
